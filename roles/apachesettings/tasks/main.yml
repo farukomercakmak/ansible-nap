@@ -1,0 +1,27 @@
+---
+
+- name: Apache paketi kuruluyor
+  apt: 
+    name:
+      - apache2
+
+- name: nextcloud.conf dosyasını kopyala
+  copy:
+    src: nextcloud.conf
+    dest: /etc/apache2/sites-available/nextcloud.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Apache a2enmod komutları çalıştırılıyor
+  command: a2ensite nextcloud.conf
+  command: a2enmod rewrite
+  command: a2enmod headers
+  command: a2enmod env
+  command: a2enmod dir
+  command: a2enmod mime
+
+- name: apache2 servisi yeniden başlatılıyor
+  service:
+    name: apache2
+    state: restarted

@@ -1,0 +1,56 @@
+---
+
+- name: Ana PHP paketleri kuruluyor
+  apt: 
+    name:
+      - php-xml 
+      - php-cli
+      - php-cgi
+      - php-mbstring
+      - php-gd
+      - php-curl
+      - php-zip
+      - php-bz2
+      - php-intl
+      - php-gmp
+
+- name: Nextcloud kullanıcı entegrasyon  paket(ler)i kuruluyor
+  apt:
+    name:
+      - php-ldap
+#      - php-smbclient
+#      - php-net-ftp
+#      - php-imap
+
+- name: PHP veritabanı paket(ler)i kuruluyor
+  apt:
+    name:
+      - php-pgsql
+#      - php-mysql
+#      - php-sqlite3
+
+- name: PHP sunucu optimizasyon paketleri kuruluyor
+  apt:
+    name:
+      - php-apcu
+      - php-memcached
+      - php-redis
+
+- name: PHP ön izleme paketleri kuruluyor
+  apt:
+    name:
+      - php-imagick
+      
+- name: PHP Apache modülü kuruluyor
+  apt:
+    name:
+      - libapache2-mod-php
+
+
+- name: php.ini dosyası kopyalanıyor
+  copy:
+    src: php.ini
+    dest: /etc/php/7.3/apache2/php.ini
+    owner: root
+    group: root
+    mode: '0644'

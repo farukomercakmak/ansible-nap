@@ -1,0 +1,25 @@
+---
+- name: Nextcloud indirmek için gerekli paketler kuruluyor
+  apt: 
+    name:
+      - wget
+      - unzip
+
+- name: Nextcloud indiriliyor
+  unarchive:
+    src: https://download.nextcloud.com/server/releases/nextcloud-19.0.1.zip
+    dest: /var/www/html
+    remote_src: yes
+
+- name: Nextcloud dizini yetkileri ayarlanıyor
+  file:
+    path: /var/www/html/nextcloud
+    recurse: yes
+    owner: www-data
+    group: www-data
+    mode: '755'
+
+- name: Nextcloud zip dosyası siliniyor
+  file:
+    path: /var/www/html/nextcloud-19.0.1.zip
+    state: absent

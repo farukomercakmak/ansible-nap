@@ -1,0 +1,5 @@
+---
+- name: Redis paketi kuruluyor
+  apt:
+    name:
+      - redis

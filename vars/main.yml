@@ -1,0 +1,6 @@
+---
+db_user: nextcloud
+db_name: nextcloud_db
+db_password: temp123
+
+update_apt_cache: true
